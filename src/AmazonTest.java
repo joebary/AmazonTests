@@ -26,28 +26,28 @@ public class AmazonTest {
       //  checkAmazonFreshPageIsLoaded();
 
         // Test Case 2
-    //    AmazonBestSellers();
+      AmazonBestSellers();
 
         // Test Case 3
-     //   AmazonCustomerService();
+       AmazonCustomerService();
 
         // Test Case 4
-     //   AmazonNewReleases();
+       AmazonNewReleases();
 
         // Test Case 5
-     //   AmazonFindaGift();
+       AmazonFindaGift();
 
         // Test Case 6
-     //   AmazonTodaysDeals();
+        AmazonTodaysDeals();
 
         // Test Case 7
-     //   HelloSelectYourAddress();
+       HelloSelectYourAddress();
 
         // Test Case 8
-     //   HelloSignIn();
+        HelloSignIn();
 
         // Test Case 9
-     //   ScrolDownMenu();
+        ScrolDownMenu();
 
         // Test Case 10
         AmazonCoupons();
@@ -313,9 +313,6 @@ public class AmazonTest {
         driver.findElement(By.id("icp-btn-close-announce")).click();
         //Adding wait
         Thread.sleep(3000);
-
-
-
 
         //Close the main page
         driver.close();
