@@ -31,6 +31,12 @@ public class AmazonTest {
         // Test Case 3
         AmazonCustomerService();
 
+        // Test Case 4
+        AmazonNewReleases();
+
+        // Test Case 5
+        AmazonFindaGift();
+
 
     }
 
@@ -55,6 +61,7 @@ public class AmazonTest {
         Thread.sleep(2000);
 
 
+
     }
 
     public static void AmazonBestSellers() throws InterruptedException {
@@ -75,7 +82,7 @@ public class AmazonTest {
         Thread.sleep(2000);
     }
 
-    public static void AmazonCustomerService () throws InterruptedException {
+    public static void AmazonCustomerService() throws InterruptedException {
         // Test Case 3:Check that the  customer is able to navigate to the Customer Service button in the main page to
         // check his orders
         driver.get(url);
@@ -83,24 +90,55 @@ public class AmazonTest {
         // click on the customer service button
         driver.findElement(By.xpath("//*[@id=\"nav-xshop\"]/a[2]")).click();
         Thread.sleep(2000);
-        // Click on "Your Orders" button
-        driver.findElement(By.linkText("Your Orders")).click();
+        // Click and test on "Where's my stuff" button
+        driver.findElement(By.linkText("Where's My Stuff?")).click();
         Thread.sleep(2000);
+        // Click on "Find a Missing Package that Shows as Delivered" to see if it works well as expected
+        driver.findElement(By.linkText("Find a Missing Package that Shows as Delivered")).click();
+        Thread.sleep(2000);
+        // navigate to the HelpSearchBox and write and not correct package number "123456789"
+        driver.findElement(By.xpath("//input[@id='helpsearch']")).sendKeys("123456789");
+        Thread.sleep(2000);
+        // Click on "GO" button to get a message "No results match your search for "123456789" in Amazon.com Help."
+        driver.findElement(By.className("a-button-input")).click();
+        Thread.sleep(2000);
+    }
 
+    public static void AmazonNewReleases() throws InterruptedException {
+        // Test Case 4:Check that the customer is able to navigate to the NewRelease button in the main page to
+        // put one of his products in shopping cart
+        driver.get(url);
 
+        //testing New Releases button and click on it
+        driver.findElement(By.xpath("//*[@id=\"nav-xshop\"]/a[3]")).click();
+        Thread.sleep(2000);
+        // The customer choose one of the products "All-new Ring Video Doorbell 3" and click on to test it
+        driver.findElement(By.xpath("//div[contains(text(),'All-new Ring Video Doorbell 3')]")).click();
+        Thread.sleep(2000);
+        // it will open a new page for "All-new Ring Video Doorbell 3" product then the customer will click on
+        // quantity button to test it
+        driver.findElement(By.id("a-autoid-0-announce")).click();
+        Thread.sleep(2000);
+        // customer will choose 3 "All-new Ring Video Doorbell 3"
+        driver.findElement(By.xpath("//a[@id='quantity_2']")).click();
+        Thread.sleep(2000);
+        // the customer will click on "add to cart" button who will open shopping cart page
+        driver.findElement(By.id("add-to-cart-button")).click();
+        Thread.sleep(2000);
+    }
+    public static void AmazonFindaGift() throws InterruptedException {
+        // Test Case 5:Check that the customer is able to navigate to the "FindaGift" button in the main page to
+        // to choose one gift for men
+        driver.get(url);
 
-
-
-
-
-            //testing New Releases button
-            driver.findElement(By.xpath("//*[@id=\"nav-xshop\"]/a[3]")).click();
-            Thread.sleep(2000);
-
-            //testing Find a Gift button
+        //Navigate FindaGift button and click on it
 
             driver.findElement(By.xpath("//*[@id=\"nav-xshop\"]/a[4]")).click();
             Thread.sleep(2000);
+
+
+
+
 
             //testing Today's Deals button
             driver.findElement(By.xpath("//*[@id=\"nav-xshop\"]/a[5]")).click();
@@ -111,4 +149,5 @@ public class AmazonTest {
 
 
     }
+
 
