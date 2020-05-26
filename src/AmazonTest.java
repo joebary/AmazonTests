@@ -47,7 +47,10 @@ public class AmazonTest {
      //   HelloSignIn();
 
         // Test Case 9
-        ScrolDownMenu();
+     //   ScrolDownMenu();
+
+        // Test Case 10
+        AmazonCoupons();
 
 
     }
@@ -277,12 +280,45 @@ public class AmazonTest {
         Thread.sleep(5000);
 
     }
+    public static void AmazonCoupons() throws InterruptedException {
+        // Test Case 10:Check that the customer is able to navigate to the "AmazonCoupons" button in the top right of the
+        // page
+        driver.get(url);
+
+        // Customer will navigate to the top right of the page for the click on Coupon button and click
+        driver.findElement(By.linkText("Coupons")).click();
+        //Adding wait
+        Thread.sleep(2000);
+        // Customer will navigate to "Health Care" link on the right side and click
+        driver.findElement(By.linkText("Health Care")).click();
+        //Adding wait
+        Thread.sleep(2000);
+        // Customer will navigate to click on "Some restrictions apply" link
+        driver.findElement(By.xpath("//a[@class='a-popover-trigger a-declarative']")).click();
+        //Adding wait
+        Thread.sleep(5000);
+        // Customer will go the bottom of the page to click on "Back to Top" button
+        driver.findElement(By.className("navFooterBackToTopText")).click();
+        //Adding wait
+        Thread.sleep(5000);
+        // Customer will go the top of the page to click on "Language" button
+        driver.findElement(By.className("icp-nav-link-inner")).click();
+        //Adding wait
+        Thread.sleep(3000);
+        // Customer will choose a different language " spanish"
+        driver.findElement(By.xpath("//div[2]//div[1]//label[1]//i[1]")).click();
+        //Adding wait
+        Thread.sleep(3000);
+        // Customer will cancel his choice and will click on "cancelar"
+        driver.findElement(By.id("icp-btn-close-announce")).click();
+        //Adding wait
+        Thread.sleep(3000);
+
 
 
 
         //Close the main page
         driver.close();
-
 
 
 
