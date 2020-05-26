@@ -37,6 +37,15 @@ public class AmazonTest {
         // Test Case 5
         AmazonFindaGift();
 
+        // Test Case 6
+        AmazonTodaysDeals();
+
+        // Test Case 7
+        HelloSelectYourAddress();
+
+        // Test Case 8
+        HelloSignIn();
+
 
     }
 
@@ -132,22 +141,88 @@ public class AmazonTest {
         driver.get(url);
 
         //Navigate FindaGift button and click on it
+        driver.findElement(By.xpath("//*[@id=\"nav-xshop\"]/a[4]")).click();
+        Thread.sleep(2000);
+        //Customer will choose "men" for shopping
+        driver.findElement(By.xpath("//span[@class='sc-ifAKCX klodVp'][contains(text(),'Men')]")).click();
+        Thread.sleep(2000);
+        //Customer will choose "popular mechanics" for shopping
+        driver.findElement(By.xpath("//span[contains(text(),'Popular Mechanics')]")).click();
+        Thread.sleep(2000);
+        //will open another page for the customer who will choose "Kindle 5$" button
+        driver.findElement(By.id("a-autoid-3-announce")).click();
+        Thread.sleep(2000);
+    }
+    public static void AmazonTodaysDeals() throws InterruptedException {
+        // Test Case 6:Check that the customer is able to navigate to the "TodaysDeals" button in the main page to
+        // to choose one product from Beauty Department
+        driver.get(url);
 
-            driver.findElement(By.xpath("//*[@id=\"nav-xshop\"]/a[4]")).click();
-            Thread.sleep(2000);
+        //Navigate TodaysDeals button to open the page sucsefully
+        driver.findElement(By.xpath("//*[@id=\"nav-xshop\"]/a[5]")).click();
+        Thread.sleep(2000);
+        //Navigate to the left side of the page to departments ---> Beauty
+        driver.findElement(By.xpath("//span[@class='a-label a-checkbox-label'][contains(text(),'Beauty')]")).click();
+        Thread.sleep(2000);
+        // Customer will navigate to choose "GLO Brilliant Deluxe Teeth Whitening Device Kit" to add to his cart
+        driver.findElement(By.id("101 23d5e95d-announce")).click();
+        Thread.sleep(2000);
+        // Customer will navigate to the top right of his page to check his Cart
+        driver.findElement(By.id("nav-cart")).click();
+        Thread.sleep(2000);
+        // it will open a new page for the purchase process  then the customer will click on
+        // quantity button to test it
+        driver.findElement(By.xpath("//span[@class='sc-action-quantity']//span[@class='sc-invisible-when-no-js']")).click();
+        Thread.sleep(2000);
+        // customer will choose 3 "All-new Ring Video Doorbell 3"
+        driver.findElement(By.id("dropdown1_9")).click();
+        Thread.sleep(2000);
+    }
+    public static void HelloSelectYourAddress() throws InterruptedException {
+        // Test Case 7:Check that the customer is able to navigate to the "HelloSelectYourAddress" button in the main
+        // page to enter a US zipcode
+        driver.get(url);
 
+        //Navigate HelloSelectYourAddress button on the top left to open the page sucsefully
+        driver.findElement(By.xpath("//a[@class='nav-a nav-a-2 a-popover-trigger a-declarative']")).click();
+        Thread.sleep(2000);
+        // navigate to the SearchBox and enter a zipcode number "10128"
+        driver.findElement(By.id("GLUXZipUpdateInput")).sendKeys("10128");
+        Thread.sleep(2000);
+        //click on "Apply" button
+        driver.findElement(By.xpath("//span[@id='GLUXZipUpdate']//input[@class='a-button-input']")).click();
+        Thread.sleep(2000);
+        // Customer will click on "Done" button
+        driver.findElement(By.name("glowDoneButton")).click();
+        Thread.sleep(2000);
+    }
+    public static void HelloSignIn() throws InterruptedException {
+        // Test Case 8:Check that the customer is able to navigate to the "HelloSignIn" button in the main
+        // page to enter a US zipcode
+        driver.get(url);
 
-
-
-
-            //testing Today's Deals button
-            driver.findElement(By.xpath("//*[@id=\"nav-xshop\"]/a[5]")).click();
-            Thread.sleep(2000);
-
+        //Navigate HelloSignIn button on the top right to open the HelloSignIn page sucsefully
+        driver.findElement(By.id("nav-link-accountList")).click();
+        Thread.sleep(2000);
+        // navigate to the SignIn Box and enter an Email or phone number Customer will enter an email "joebary2008@gmail.com
+        // "
+        driver.findElement(By.id("ap_email")).sendKeys("youssefgomaa@live.co.uk");
+        Thread.sleep(2000);
+        //Customer have to click Continue button to continue the process to sign in to his account
+        driver.findElement(By.id("continue")).click();
+        Thread.sleep(2000);
+        //A new page will open to the customer to enter his password , the customer will enter a not valid password
+        driver.findElement(By.id("ap_password")).sendKeys("123456789HGW");
+        Thread.sleep(4000);
+        //Customer have to click "SignIn" button to continue the process to sign in to his account
+        //A message will appear on the page "There was a problem Your password is incorrect"
+        driver.findElement(By.id("signInSubmit")).click();
+        Thread.sleep(2000);
+    }
 
         }
 
 
-    }
+
 
 
